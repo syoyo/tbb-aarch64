@@ -1,3 +1,20 @@
+## AARCH64 port of cmake ported tbb
+
+### Supported platform
+
+* [x] Android
+* [ ] AARCH64 linux
+
+### Build with Android
+
+Edit path and setting in `scripts/bootstrap-android-cmake.sh`, then
+
+```
+$ ./scripts/bootstrap-android-cmake.sh
+$ build-android
+$ make && make install
+```
+
 ### Intel(R) Threading Building Blocks
 
 [![Stable release](https://img.shields.io/badge/version-2019_U2-green.svg)](https://github.com/01org/tbb/releases/tag/2019_U2)
