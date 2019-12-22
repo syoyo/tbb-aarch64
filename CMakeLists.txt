@@ -274,6 +274,9 @@ if (TBB_BUILD_SHARED)
           LIBRARY DESTINATION ${TBB_INSTALL_LIBRARY_DIR}
           ARCHIVE DESTINATION ${TBB_INSTALL_ARCHIVE_DIR}
           RUNTIME DESTINATION ${TBB_INSTALL_RUNTIME_DIR})
+  if (MSVC)
+    install(FILES $<TARGET_PDB_FILE:tbb> DESTINATION ${TBB_INSTALL_RUNTIME_DIR} OPTIONAL)
+  endif()
   if (UNIX AND NOT APPLE)
     target_link_libraries(tbb PUBLIC ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_DL_LIBS})
   endif()
@@ -327,6 +330,9 @@ if(TBB_BUILD_TBBMALLOC)
             LIBRARY DESTINATION ${TBB_INSTALL_LIBRARY_DIR}
             ARCHIVE DESTINATION ${TBB_INSTALL_ARCHIVE_DIR}
             RUNTIME DESTINATION ${TBB_INSTALL_RUNTIME_DIR})
+    if (MSVC)
+      install(FILES $<TARGET_PDB_FILE:tbbmalloc> DESTINATION ${TBB_INSTALL_RUNTIME_DIR} OPTIONAL)
+    endif()
     if (UNIX AND NOT APPLE)
       target_link_libraries(tbbmalloc PUBLIC ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_DL_LIBS})
     endif()
@@ -353,6 +359,9 @@ if(TBB_BUILD_TBBMALLOC_PROXY)
             LIBRARY DESTINATION ${TBB_INSTALL_LIBRARY_DIR}
             ARCHIVE DESTINATION ${TBB_INSTALL_ARCHIVE_DIR}
             RUNTIME DESTINATION ${TBB_INSTALL_RUNTIME_DIR})
+    if (MSVC)
+      install(FILES $<TARGET_PDB_FILE:tbbmalloc_proxy> DESTINATION ${TBB_INSTALL_RUNTIME_DIR} OPTIONAL)
+    endif()
     if (UNIX AND NOT APPLE)
       target_link_libraries(tbbmalloc_proxy PUBLIC ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_DL_LIBS})
     endif()
@@ -421,7 +430,9 @@ if (TBB_BUILD_TESTS)
   tbb_add_test (aggregator)
   tbb_add_test (aligned_space)
   tbb_add_test (assembly)
-  tbb_add_test (async_msg)
+  if (NOT WIN32)
+    tbb_add_test (async_msg) # msvc64/debug timeouts
+  endif()
   tbb_add_test (async_node)
   # tbb_add_test (atomic) # msvc64/debug timeouts: Compile-time initialization fails for static tbb::atomic variables
   tbb_add_test (blocked_range2d)
@@ -441,7 +452,9 @@ if (TBB_BUILD_TESTS)
   tbb_add_test (concurrent_lru_cache)
   # tbb_add_test (concurrent_monitor) # too long
   # tbb_add_test (concurrent_priority_queue)
-  tbb_add_test (concurrent_queue)
+  if (NOT WIN32)
+    tbb_add_test (concurrent_queue) # msvc64/debug timeouts
+  endif()
   # tbb_add_test (concurrent_queue_whitebox)
   tbb_add_test (concurrent_unordered_map)
   # tbb_add_test (concurrent_unordered_set)
