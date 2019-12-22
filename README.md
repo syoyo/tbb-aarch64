@@ -3,7 +3,8 @@
 ### Supported platform
 
 * [x] Android
-* [ ] AARCH64 linux
+  * Assume NDK r20 or later
+* [x] AARCH64 linux
 
 ### Build with Android
 

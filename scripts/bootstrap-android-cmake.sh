@@ -2,7 +2,8 @@
 
 ## Please edit android sdk/ndk/cmake path
 ANDROID_SDK_ROOT=$HOME/Android/Sdk/
-ANDROID_NDK_ROOT=$HOME/local/android-ndk-r19c
+ANDROID_NDK_ROOT=$HOME/Android/Sdk/ndk-bundle
+#ANDROID_NDK_ROOT=$HOME/local/android-ndk-r19c
 CMAKE_BIN=$ANDROID_SDK_ROOT/cmake/3.10.2.4988404/bin/cmake
 
 rm -rf build-android
