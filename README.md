@@ -2,8 +2,8 @@
 
 ### Supported platform
 
-* [x] Android
-  * Assume NDK r20 or later
+* [x] Android aarch64(arm64-v8a)
+  * Tested on NDK r20 or later
 * [x] AARCH64 linux
 
 ### Build with Android
@@ -15,6 +15,8 @@ $ ./scripts/bootstrap-android-cmake.sh
 $ build-android
 $ make && make install
 ```
+
+In default, built files will be installed to `<this_repo>/dist-android` directory.
 
 ### Intel(R) Threading Building Blocks
 
