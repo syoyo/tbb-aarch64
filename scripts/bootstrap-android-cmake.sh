@@ -31,6 +31,5 @@ $CMAKE_BIN \
   -DANDROID_NATIVE_API_LEVEL=28 \
   -DANDROID_STL=c++_shared \
   -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-  -DCMAKE_INSTALL_PREFIX=$HOME/local/tbb-android \
   -DTBB_BUILD_TESTS=Off \
   ..

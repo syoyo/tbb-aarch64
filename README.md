@@ -18,6 +18,22 @@ $ make && make install
 
 In default, built files will be installed to `<this_repo>/dist-android` directory.
 
+### Build on AARCH64 linux
+
+Edit path and setting in `scripts/bootstrap-aarch64-linux.sh`, then
+
+```
+$ ./scripts/bootstrap-aarch64-linux.sh
+$ build-aarch64
+$ make && make install
+```
+
+At the moment, there is no ARM specific cmake flags for Linux target, so you can directly use `cmake`.
+
+### Build directory
+
+`build` directory already exists and contains a file needed to build TBB(e.g. `version_string.ver`) , thus you need to specify build directory other than `build`.
+
 ### Intel(R) Threading Building Blocks
 
 [![Stable release](https://img.shields.io/badge/version-2019_U2-green.svg)](https://github.com/01org/tbb/releases/tag/2019_U2)
