@@ -2,8 +2,8 @@
 
 ### Supported platform
 
-* [x] Android
-  * Assume NDK r20 or later
+* [x] Android aarch64(arm64-v8a)
+  * Tested on NDK r20 or later
 * [x] AARCH64 linux
 
 ### Build with Android
@@ -15,6 +15,24 @@ $ ./scripts/bootstrap-android-cmake.sh
 $ build-android
 $ make && make install
 ```
+
+In default, built files will be installed to `<this_repo>/dist-android` directory.
+
+### Build on AARCH64 linux
+
+Edit path and setting in `scripts/bootstrap-aarch64-linux.sh`, then
+
+```
+$ ./scripts/bootstrap-aarch64-linux.sh
+$ build-aarch64
+$ make && make install
+```
+
+At the moment, there is no ARM specific cmake flags for Linux target, so you can directly use `cmake`.
+
+### Build directory
+
+`build` directory already exists and contains a file needed to build TBB(e.g. `version_string.ver`) , thus you need to specify build directory other than `build`.
 
 ### Intel(R) Threading Building Blocks
 
